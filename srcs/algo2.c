@@ -30,10 +30,10 @@ char	**tab_init(int size)
 
 	i = 0;
 	if (!(solution = (char **)malloc(sizeof(char *) * size + 1)))
-		ft_error('M');
+		ft_error();
 	while (i < size)
 		if (!(solution[i++] = (char *)malloc(sizeof(char) * size + 1)))
-			ft_error('M');
+			ft_error();
 	i = 0;
 	while (i < size)
 	{

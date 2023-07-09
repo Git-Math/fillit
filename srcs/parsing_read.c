@@ -22,16 +22,16 @@ int		ft_backline(const char *str)
 	while (str[i] != '\0')
 	{
 		if (str[i] != '\n' && str[i] != '.' && str[i] != '#')
-			ft_error('T');
+			ft_error();
 		if (str[i] == '\n')
 			len++;
 		if (i > 0 && str[i] != '\0' && str[i - 1] == '\n'
 			&& str[i] == '\n' && str[i + 1] == '\n')
-			ft_error('S');
+			ft_error();
 		i++;
 	}
 	if (len % 5 != 4)
-		ft_error('S');
+		ft_error();
 	return (len);
 }
 
@@ -59,20 +59,20 @@ char	*ft_readfile(char *name)
 
 	str = NULL;
 	if ((fd = open(name, O_RDONLY)) < 0)
-		ft_error('O');
+		ft_error();
 	if (!(buff = ft_strnew(BUFF_SIZE)))
-		ft_error('M');
+		ft_error();
 	while (read(fd, buff, BUFF_SIZE) > 0)
 	{
 		if (!(str = ft_concat(str, buff)))
-			ft_error('M');
+			ft_error();
 		if (buff)
 			free(buff);
 		if (!(buff = ft_strnew(BUFF_SIZE)))
-			ft_error('M');
+			ft_error();
 	}
 	if (!str)
-		ft_error('V');
+		ft_error();
 	return (str);
 }
 
@@ -99,7 +99,7 @@ char	*ft_getline(const char *str, int pos)
 		i++;
 	}
 	if (!(newstr = ft_strsub(str + start, 0, i - (start + 1))))
-		ft_error('M');
+		ft_error();
 	return (newstr);
 }
 
@@ -111,10 +111,10 @@ char	**ft_organize(char *name)
 	char	**file;
 
 	if (!(strfile = ft_readfile(name)))
-		ft_error('M');
+		ft_error();
 	nbl = ft_backline(strfile);
 	if (!(file = (char **)malloc(sizeof(char *) * (nbl + 1))))
-		ft_error('M');
+		ft_error();
 	i = 0;
 	while (i < nbl)
 	{

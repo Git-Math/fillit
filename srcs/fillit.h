@@ -35,7 +35,7 @@ typedef struct	s_info
 	t_tetri	*tetris;
 }				t_info;
 
-void			ft_error(char c);
+void			ft_error(void);
 void			ft_check(char **file);
 char			**ft_organize(char *name);
 void			ft_getdata(char **file, t_info *data);

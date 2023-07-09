@@ -12,12 +12,10 @@
 
 #include "fillit.h"
 
-void	ft_error(char c)
+void	ft_error(void)
 {
-	if (c)
-		;
 	ft_putendl("error");
-	exit(0);
+	exit(1);
 }
 
 void	ft_check(char **file)
@@ -31,11 +29,11 @@ void	ft_check(char **file)
 	while (file[i] != NULL)
 	{
 		if ((len = ft_strlen(file[i])) != 4 && len != 0)
-			ft_error('T');
+			ft_error();
 		if (len == 4)
 			q++;
 		if (len == 0 && q % 4 != 0)
-			ft_error('T');
+			ft_error();
 		i++;
 	}
 }

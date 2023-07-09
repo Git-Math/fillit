@@ -26,7 +26,7 @@ int			ft_nbtetri(char **file)
 		i++;
 	}
 	if (len / 4 > 26)
-		ft_error('T');
+		ft_error();
 	return (len / 4);
 }
 
@@ -46,9 +46,9 @@ void		ft_initdata(t_info *data, char **file, int *start, int pos)
 
 	data->tetris[pos].nb = 0;
 	if (!(data->tetris[pos].x = (int *)malloc(sizeof(int) * 4)))
-		ft_error('M');
+		ft_error();
 	if (!(data->tetris[pos].y = (int *)malloc(sizeof(int) * 4)))
-		ft_error('M');
+		ft_error();
 	while (file[*start] != NULL && ft_strlen(file[*start]) != 0)
 	{
 		j = 0;
@@ -57,13 +57,13 @@ void		ft_initdata(t_info *data, char **file, int *start, int pos)
 			if (file[*start][j] == '#')
 				getpos(data, j, *start, pos);
 			if (data->tetris[pos].nb > 4)
-				ft_error('T');
+				ft_error();
 			j++;
 		}
 		*start += 1;
 	}
 	if (data->tetris[pos].nb != 4)
-		ft_error('T');
+		ft_error();
 }
 
 void		ft_getdata(char **file, t_info *data)
@@ -73,7 +73,7 @@ void		ft_getdata(char **file, t_info *data)
 
 	data->nb = ft_nbtetri(file);
 	if (!(data->tetris = (t_tetri *)malloc(sizeof(t_tetri) * data->nb)))
-		ft_error('M');
+		ft_error();
 	i = 0;
 	j = 0;
 	while (file[i] != NULL)

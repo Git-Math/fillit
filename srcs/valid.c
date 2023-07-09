@@ -38,7 +38,7 @@ void	adjacblock(t_tetri block)
 		px++;
 	}
 	if (!adj || adj / 2 < 3)
-		ft_error('T');
+		ft_error();
 }
 
 void	normetetri(t_info *data, int pos)
